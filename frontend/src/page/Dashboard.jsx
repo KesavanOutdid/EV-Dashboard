@@ -16,7 +16,7 @@ const Dashboard = ({ userInfo, handleLogout }) => {
     // Get table data
     useEffect(() => {
         // Define the API URL based on the event detail
-        const url = `http://192.168.1.7:9090/GetAllChargerDetails`;
+        const url = `http://192.168.1.70:9090/GetAllChargerDetails`;
         axios.get(url).then((res) => {
             // console.log('Data fetched successfully:', res.data);
             setData(res.data); // Assuming the data you need is inside the 'data' property
@@ -73,7 +73,7 @@ const Dashboard = ({ userInfo, handleLogout }) => {
   
     // Online, Offline and Faulty charger lengths 
     const onlineStatus = 'Charging'; // Define the status for online chargers
-    const offlineStatuses = [' ', 'pending', 'Available', 'Faulted']; // Define other statuses for offline chargers
+    const offlineStatuses = [' ', 'pending', 'Available']; // Define other statuses for offline chargers
     const faultyStatus = 'Faulted'; // Define other statuses for faulty chargers
     
     const onlineChargers = data.filter((charger) => charger && charger.status && charger.status.trim() === onlineStatus);
@@ -453,5 +453,5 @@ const Dashboard = ({ userInfo, handleLogout }) => {
         </div>
     )
 }   
-                 
+                // http://198.168.1.24:4214
 export default Dashboard

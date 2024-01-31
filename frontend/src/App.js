@@ -1,31 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Login from './page/Login';
 import Dashboard from './page/Dashboard';
+import HardwareManagement from './page/HardwareManagement';
+import PricingManagement from './page/PricingManagement';
+import OccupantManagement from './page/OccupantManagement';
+import AccessManagement from './page/AccessManagement';
 
 const App = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [userInfo, setUserInfo] = useState({});
-
-  useEffect(() => {
-    const storedUser = sessionStorage.getItem('user'); // Use sessionStorage here
-    if (storedUser) {
-      setLoggedIn(true);
-      setUserInfo(JSON.parse(storedUser));
-    }
-  }, []);
+  const storedUser = JSON.parse(sessionStorage.getItem('user'));
+  const [loggedIn, setLoggedIn] = useState(!!storedUser);
+  const [userInfo, setUserInfo] = useState(storedUser || {});
+  const [initialLoad, setInitialLoad] = useState(true);
 
   const handleLogin = (data) => {
     const { email, ...rest } = data;
     setUserInfo({ email, ...rest });
     setLoggedIn(true);
-    sessionStorage.setItem('user', JSON.stringify({ email, ...rest })); // Use sessionStorage here
+    sessionStorage.setItem('user', JSON.stringify({ email, ...rest }));
   };
 
   const handleLogout = () => {
     setLoggedIn(false);
     setUserInfo({});
-    sessionStorage.removeItem('user'); // Use sessionStorage here
+    sessionStorage.removeItem('user');
   };
 
   return (
@@ -35,7 +33,43 @@ const App = () => {
       </Route>
       <Route path="/dashboard">
         {loggedIn ? (
-          <Dashboard userInfo={userInfo} handleLogout={handleLogout} />
+          initialLoad ? (
+            <Dashboard
+              userInfo={userInfo}
+              handleLogout={handleLogout}
+              setInitialLoad={setInitialLoad}
+            />
+          ) : (
+            <Dashboard userInfo={userInfo} handleLogout={handleLogout} />
+          )
+        ) : (
+          <Redirect to="/" />
+        )}
+      </Route>
+      <Route path="/HardwareManagement">
+        {loggedIn ? (
+          <HardwareManagement userInfo={userInfo} handleLogout={handleLogout} />
+        ) : (
+          <Redirect to="/" />
+        )}
+      </Route>
+      <Route path="/PricingManagement">
+        {loggedIn ? (
+          <PricingManagement userInfo={userInfo} handleLogout={handleLogout} />
+        ) : (
+          <Redirect to="/" />
+        )}
+      </Route>
+      <Route path="/OccupantManagement">
+        {loggedIn ? (
+          <OccupantManagement userInfo={userInfo} handleLogout={handleLogout} />
+        ) : (
+          <Redirect to="/" />
+        )}
+      </Route>
+      <Route path="/AccessManagement">
+        {loggedIn ? (
+          <AccessManagement userInfo={userInfo} handleLogout={handleLogout} />
         ) : (
           <Redirect to="/" />
         )}

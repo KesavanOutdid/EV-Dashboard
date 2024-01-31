@@ -19,8 +19,9 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/dashboard/EV_Logo_16-12-2023.png" />
-
+  <link rel="shortcut icon" href="images/dashboard/EV_Logo_16-12-2023.png">
+  <!-- Icon library -->
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet">
 </head>
 <body>
   <div id="root"></div>
@@ -49,7 +50,17 @@
 
   <!--  Charts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
- 
+  <!-- <script>
+    // Check if the page has been refreshed before
+    if (!sessionStorage.getItem('refreshed')) {
+      // Perform auto-refresh only once after 5 seconds (for demonstration)
+      setTimeout(function() {
+        // Set the flag to indicate that the page has refreshed
+        sessionStorage.setItem('refreshed', 'true');
+        location.reload(); // Reload the page
+      }, 5000); // Adjust the time (in milliseconds) as needed
+    }
+  </script> -->
 </body>
 
 </html>

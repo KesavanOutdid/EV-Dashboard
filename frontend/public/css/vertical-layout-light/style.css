@@ -123,6 +123,62 @@
   background-color: #f0f0f0; /* Change this color to your preferred background color */
   cursor: pointer; /* Change 'pointer' to the desired cursor type */
 }
+
+.modalStyle {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalContentStyle {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 85%; /* Adjust the width as needed */
+  max-width: 500px; /* Maximum width for larger screens */
+  border-radius: 5px;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.divStyleOccpant {
+  background: #f1efef; 
+  color:#070707BD;
+  border-radius: 5px;
+  width: fit-content;
+  padding: 5px;
+  margin-bottom: 5px;
+  margin-right:5px;
+  display: inline-block
+}
+.divStyleTwoOccpant  {
+  background: #070707BD;
+   color:white; 
+  border-radius: 5px;
+  width: fit-content;
+  padding: 5px;
+  margin-bottom: 5px;
+  margin-right:5px;
+  display: inline-block
+}
+
+.divStyleThreeOccpant  {
+  background: #f8c00f;
+  color:#070707BD;
+  border-radius: 5px;
+  width: fit-content;
+  padding: 5px;
+  margin-bottom: 5px;
+  margin-right:5px;
+  display: inline-block}
 /* Developer changes*/
 
 @-moz-keyframes flash {
@@ -28478,7 +28534,7 @@ div.tagsinput span.tag a {
   font-family: "Nunito", sans-serif;
   font-weight: 500;
   padding: 0;
-  width: 235px;
+  width: 240px;
   z-index: 11;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;

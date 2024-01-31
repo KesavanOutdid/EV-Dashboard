@@ -11,14 +11,14 @@ const Login = ({ handleLogin }) => {
     e.preventDefault();
     try {
       // Perform API call for login
-      const response = await fetch('http://192.168.1.7:9090/GetLoginDetails', {
+      const response = await fetch('http://192.168.1.70:9090/GetLoginDetails', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
       });
-     // alert(email )
+      // alert(email )
       if (response.ok) {
         // const data = await response.json();
         // handleLogin(data);
@@ -37,7 +37,7 @@ const Login = ({ handleLogin }) => {
         setErrorMessage('An error occurred during login. Please try again later.');
       }
     }
-  };
+  }; 
 
   return (
     <div className="container-scroller">

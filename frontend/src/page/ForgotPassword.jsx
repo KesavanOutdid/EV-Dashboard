@@ -11,7 +11,7 @@ function ForgotPassword() {
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://192.168.1.8:9090/GetForgotPasswordDetails', {
+      const response = await axios.post('http://192.168.1.70:9090/GetForgotPasswordDetails', {
         email: email,
       });
       if (response.status === 200) {
